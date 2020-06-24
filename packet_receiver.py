@@ -10,7 +10,7 @@ def decode(hexMsg):
     """
     msgArr = [int(hexMsg[i:i+4],16) for i in range(0, len(hexMsg), 4)]
     headerSum = hex(sum(msgArr[0:10]))[2:]
-    if(len(headerSum) > 4):         # means carry exist
+    if(len(headerSum) > 4):         # carry exist
         headerSum = int(headerSum[0],16) + int(headerSum[1:],16)
     else:                           # no carry
         headerSum = int(headerSum,16)
@@ -37,9 +37,9 @@ def main():
                 msg = hex(int(rawMsg,16))
                 totalLen = len(bin(int(msg,16)))
                 dataLen = len(str(bin(int(msg[40:],16))))
-                msgStr = binascii.unhexlify(msg[40:]).decode('ascii')
+                msgStr = binascii.unhexlify(msg[40:]).decode('utf-8')
                 print("The data received from {}:{} is \"{}\"".format(addr[0], addr[1], msgStr))
-                print("The data has {} bits or {} bytes.".format(dataLen,dataLen/8))
+                print("The data has {} bits or {} bytes.".format(dataLen, int(dataLen/8)))
                 print("Total length of the packet is {} bytes.".format(int(totalLen/8)))
                 if (decode(msg[2:]) == True):
                     print("The verification of the checksum demonstrates that the packet received is correct.\n")

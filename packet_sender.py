@@ -30,7 +30,7 @@ def encode(hexMsg):
             20 + int(len(bin(hexMsg))/8)            # 20bytes + bin(payload_len)/8
         ),16
     )
-    ip_id = int(hex(random.randint(0,65535)),16)    # identification
+    ip_id = int(hex(random.randint(0,65535)),16)    # random id
     ip_frag = 0x4000                                # fragment offset
     ip_ttl = 0x4006                                 # time to live
     ip_cs = 0x0                                     # initialize checksum = 0000
@@ -79,7 +79,7 @@ def main(argv):
             datagram = encode(hexMsg)       # encode msg
             s.send(datagram.encode())
             sentTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-            server_msg = s.recv(1024).decode('ascii')
+            server_msg = s.recv(1024).decode('utf-8')
             print("\"{}\" - Received by server at {}\n".format(server_msg, sentTime))
             payload = ''
         s.close()
