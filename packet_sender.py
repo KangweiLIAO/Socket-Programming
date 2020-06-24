@@ -6,7 +6,7 @@ SERVER = ''
 PORT = 6666
 payload = ''
 
-def calc_checksum(headerSum):
+def calc_checksum(header):
     """ 
     Calculate the checksum of given sum of header (hex_string) 
     and return checksum (int, base 16)
@@ -79,7 +79,8 @@ def main(argv):
             datagram = encode(hexMsg)       # encode msg
             s.send(datagram.encode())
             sentTime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-            print("\"{}\" - {}\n".format(payload, sentTime))
+            server_msg = s.recv(1024).decode('ascii')
+            print("\"{}\" - Received by server at {}\n".format(server_msg, sentTime))
             payload = ''
         s.close()
     except:

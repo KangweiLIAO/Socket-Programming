@@ -45,6 +45,7 @@ def main():
                     print("The verification of the checksum demonstrates that the packet received is correct.\n")
                 else:
                     print("The verification of the checksum demonstrates that the packet received is corrupted. Packet discarded!\n")
+                conn.send(msgStr.encode())            # send comfirmation msg to client
     except:
         print("Unexpected Error:", sys.exc_info()[0])
         raise
