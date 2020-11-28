@@ -1,4 +1,4 @@
-# Socket Programming - By Kangwei Liao (#:8568800)
+# Socket Programming
 This is a socket programming which can encode message on client side, send the encoded packet to server side and decode it.
 
 ## Steps to start client & server
