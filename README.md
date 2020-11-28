@@ -1,5 +1,5 @@
 # Socket Programming
-This is a socket programming which can encode message on client side, send the encoded packet to server side and decode it.
+This is a program which can encode message on client side, send the encoded packet to server side and decode it.
 
 ## Steps to start client & server
 1. Start 2 new terminal/cmd window and cd to the current directory
